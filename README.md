@@ -1,7 +1,7 @@
 # topSUS
 Context:
 1. Ada chaos data (loretz data tadi) dengan bentuk pattern spiral tertentu tadi itu (xyz)
-2. Data displit jadi 80 training data, 20 testing data
+2. Data displit jadi 80% training data, 20% testing data
 
 Task:
 1. Buat 4 jenis neural network(1 layer BPNN, multilayer BPNN, CNN, LSTM)
