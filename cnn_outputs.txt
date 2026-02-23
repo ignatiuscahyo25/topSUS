@@ -1,0 +1,22 @@
+train_cnn:
+Loading lorenz_train.txt...
+Starting Training...
+Epoch 50/300, Loss (MSE): 0.000198
+Epoch 100/300, Loss (MSE): 0.000058
+Epoch 150/300, Loss (MSE): 0.000033
+Epoch 200/300, Loss (MSE): 0.000021
+Epoch 250/300, Loss (MSE): 0.000024
+Epoch 300/300, Loss (MSE): 0.000012
+Training Complete. Model saved to 'cnn_model_params.json'
+
+test_cnn:
+Running inference on 1996 samples...
+------------------------------
+Evaluation Results on lorenz_test.txt
+------------------------------
+MAE (X): 0.021030
+MAE (Y): 0.030396
+MAE (Z): 0.019307
+Total MAE: 0.023578
+
+Generating Graphs...
