@@ -1,31 +1,32 @@
 import numpy as np
 
 # 1. Load the data
-# We use loadtxt as the data provided is space-separated floating point numbers
 filename = 'lorenz_data.txt'
 data = np.loadtxt(filename)
 
-# 2. Shuffle the data
-# We generate a list of indices [0, 1, 2... N], shuffle them, 
-# and then reorder the data array based on these indices.
-indices = np.arange(data.shape[0])
-np.random.seed(42) # Set seed for reproducibility
-np.random.shuffle(indices)
-shuffled_data = data[indices]
-
-# 3. Calculate the split index
-split_ratio = 0.8
+# 2. Calculate the split index
+# We take the total number of rows (data.shape[0]) and multiply by 0.8
+split_ratio = 0.80
 split_index = int(data.shape[0] * split_ratio)
 
-# 4. Slice the array
-train_data = shuffled_data[:split_index]
-test_data = shuffled_data[split_index:]
+# 3. Split the data sequentially
+# train_data takes everything from index 0 up to split_index
+# test_data takes everything from split_index to the end
+train_data = data[:split_index]
+test_data = data[split_index:]
 
-# 5. Save the outputs (Optional)
-np.savetxt('train_data.txt', train_data)
-np.savetxt('test_data.txt', test_data)
+# 4. Save the split files (Optional)
+np.savetxt('lorenz_train.txt', train_data)
+np.savetxt('lorenz_test.txt', test_data)
 
-# Print verification
-print(f"Original shape: {data.shape}")
-print(f"Training shape (80%): {train_data.shape}")
-print(f"Testing shape (20%): {test_data.shape}")
+# 5. Verify the split
+print(f"Total samples: {data.shape[0]}")
+print(f"Split index:   {split_index}")
+print("-" * 30)
+print(f"Training set shape: {train_data.shape} (First 80%)")
+print(f"Testing set shape:  {test_data.shape} (Last 20%)")
+
+# Verify continuity (The last point of train should come just before first point of test)
+print("-" * 30)
+print(f"Last training point:  {train_data[-1]}")
+print(f"First testing point:  {test_data[0]}")
